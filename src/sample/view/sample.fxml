@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane prefWidth="354.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.controller.Controller">
+   <children>
+      <VBox>
+         <children>
+            <Pane fx:id="actionBar" prefHeight="53.0" prefWidth="354.0" style="-fx-background-color: #584B4F;">
+               <children>
+                  <Label layoutX="14.0" layoutY="14.0" text="F   I   F   O" textFill="#efeae1">
+                     <font>
+                        <Font name="Arial" size="21.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="close" fitHeight="23.0" fitWidth="23.0" layoutX="317.0" layoutY="15.0" onMouseClicked="#closeButton" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/icons8_Close_Window_100px_3.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="maximize" fitHeight="23.0" fitWidth="23.0" layoutX="294.0" layoutY="15.0" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/icons8_Maximize_Window_100px_2.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="minimize" fitHeight="60.0" fitWidth="23.0" layoutX="271.0" layoutY="15.0" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/icons8_Minimize_Window_100px_3.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane prefHeight="354.0" prefWidth="354.0" style="-fx-background-color: #353436;">
+               <children>
+                  <Label layoutX="130.0" layoutY="18.0" text="Frame" textFill="#8d8273">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="frame_textfield" labelFloat="true" layoutX="184.0" layoutY="14.0" onKeyPressed="#frameKeyPressed" prefHeight="25.0" prefWidth="40.0" stylesheets="@css/jfxtextfield.css" />
+                  <Label layoutX="71.0" layoutY="58.0" text="Reference String" textFill="#8d8273">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="referenceString_textfield" layoutX="184.0" layoutY="54.0" onKeyPressed="#referenceStringKeyPressed" prefHeight="25.0" prefWidth="40.0" stylesheets="@css/jfxtextfield.css" />
+                  <TextArea fx:id="output_textarea" editable="false" layoutX="60.0" layoutY="127.0" prefHeight="117.0" prefWidth="249.0" />
+                  <Label layoutX="60.0" layoutY="265.0" text="The number of hits:" textFill="#8d8273">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="60.0" layoutY="281.0" text="Hit ratio:" textFill="#8d8273">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="60.0" layoutY="297.0" text="The number of Faults:" textFill="#8d8273">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="hits" layoutX="185.0" layoutY="265.0" text="0" textFill="#8d8273">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="hit_ratio" layoutX="116.0" layoutY="281.0" text="0" textFill="#8d8273">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="faults" layoutX="200.0" layoutY="297.0" text="0" textFill="#8d8273">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Label>
+                  <JFXButton buttonType="RAISED" layoutX="244.0" layoutY="54.0" onAction="#enterButtonOnAction" ripplerFill="#584b4f" style="-fx-border-color: #343233; -fx-background-color: #FFD152; -fx-background-radius: 11; -fx-border-radius: 9;" text="Enter" textFill="#343233">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" layoutX="244.0" layoutY="283.0" onAction="#resetButtonOnAction" ripplerFill="#584b4f" style="-fx-border-color: #343233; -fx-background-color: #FFD152; -fx-background-radius: 11; -fx-border-radius: 9;" text="Reset" textFill="#343233">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+   </children>
+</Pane>
