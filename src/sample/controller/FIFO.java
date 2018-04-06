@@ -1,5 +1,6 @@
 package sample.controller;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +9,7 @@ public class FIFO{
     private List<Integer> reference = new ArrayList<>();
     private int mem_layout[][];
     private int hit;
-    private int fault;
+    private int fault = 0;
 
 
     public FIFO(int frames, List<Integer> reference) {
@@ -26,12 +27,19 @@ public class FIFO{
         return frames;
     }
 
-    public int getHit() {
+    public Integer getHit() {
         return hit;
     }
 
-    public int getFault() {
+    public Integer getFault() {
         return fault;
+    }
+
+    public String getHitRatio() {
+        DecimalFormat format = new DecimalFormat("0.##");
+        double hitRatio = (double)hit /reference.size();
+        return format.format(hitRatio);
+
     }
 
     //-------------------------Setter Methods------------------------
@@ -49,7 +57,6 @@ public class FIFO{
     public String calculate(){
         hit = 0;
         int pointer = 0;
-        fault = 0;
 
         mem_layout = new int[reference.size()][frames];
         int[] buffer = new int[frames];
@@ -83,7 +90,7 @@ public class FIFO{
         for(int i = 0; i < frames; i++)
         {
             for(int j = 0; j < reference.size(); j++)
-                output.append(String.format("%3d ",mem_layout[j][i]));
+                output.append(String.format("%3d%5s%3s",mem_layout[j][i], "|", ""));
             output.append("\n");
         }
         return output.toString();

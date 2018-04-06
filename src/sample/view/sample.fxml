@@ -14,7 +14,7 @@
    <children>
       <VBox>
          <children>
-            <Pane fx:id="actionBar" prefHeight="53.0" prefWidth="354.0" style="-fx-background-color: #584B4F;">
+            <Pane fx:id="actionBar" onMouseDragged="#actionBarMouseDragged" onMousePressed="#actionBarMousePressed" prefHeight="53.0" prefWidth="354.0" style="-fx-background-color: #584B4F;">
                <children>
                   <Label layoutX="14.0" layoutY="14.0" text="F   I   F   O" textFill="#efeae1">
                      <font>
@@ -52,7 +52,7 @@
                      </font>
                   </Label>
                   <JFXTextField fx:id="referenceString_textfield" layoutX="184.0" layoutY="54.0" onKeyPressed="#referenceStringKeyPressed" prefHeight="25.0" prefWidth="40.0" stylesheets="@css/jfxtextfield.css" />
-                  <TextArea fx:id="output_textarea" editable="false" layoutX="60.0" layoutY="127.0" prefHeight="117.0" prefWidth="249.0" />
+                  <TextArea fx:id="output_textarea" layoutX="60.0" layoutY="127.0" prefHeight="117.0" prefWidth="249.0" />
                   <Label layoutX="60.0" layoutY="265.0" text="The number of hits:" textFill="#8d8273">
                      <font>
                         <Font name="Arial" size="14.0" />
