@@ -1,4 +1,4 @@
-package sample.controller;
+package sample.model;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -40,6 +40,12 @@ public class FIFO{
         double hitRatio = (double)hit /reference.size();
         return format.format(hitRatio);
 
+    }
+
+    public String getFaultRate(){
+        DecimalFormat format = new DecimalFormat("0.##");
+        double faultRate = ((double) fault / reference.size())*100;
+        return "% " + format.format(faultRate);
     }
 
     //-------------------------Setter Methods------------------------

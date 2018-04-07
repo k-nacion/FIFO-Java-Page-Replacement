@@ -52,7 +52,7 @@
                      </font>
                   </Label>
                   <JFXTextField fx:id="referenceString_textfield" layoutX="184.0" layoutY="54.0" onKeyPressed="#referenceStringKeyPressed" prefHeight="25.0" prefWidth="40.0" stylesheets="@css/jfxtextfield.css" />
-                  <TextArea fx:id="output_textarea" layoutX="60.0" layoutY="127.0" prefHeight="117.0" prefWidth="249.0" />
+                  <TextArea fx:id="output_textarea" editable="false" layoutX="60.0" layoutY="127.0" prefHeight="117.0" prefWidth="249.0" />
                   <Label layoutX="60.0" layoutY="265.0" text="The number of hits:" textFill="#8d8273">
                      <font>
                         <Font name="Arial" size="14.0" />
@@ -93,6 +93,26 @@
                         <Font name="Arial" size="14.0" />
                      </font>
                   </JFXButton>
+                  <Label layoutX="60.0" layoutY="313.0" text="Fault rate:" textFill="#8d8273">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="faultRate" layoutX="126.0" layoutY="313.0" text="0" textFill="#8d8273">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="60.0" layoutY="104.0" text="Reference length: " textFill="#8d8273">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="refLength" layoutX="173.0" layoutY="104.0" text="0" textFill="#8d8273">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
          </children>

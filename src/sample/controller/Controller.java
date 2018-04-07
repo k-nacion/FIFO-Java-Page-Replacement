@@ -7,17 +7,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 import javafx.stage.Window;
-import sample.view.Main;
+import sample.model.FIFO;
 
 import java.net.URL;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -36,6 +33,8 @@ public class Controller implements Initializable {
     @FXML private Label hit_ratio;
     @FXML private Label faults;
     @FXML private Pane actionBar;
+    @FXML private Label faultRate;
+    @FXML private Label refLength;
 
     //--------------------------Global Variables--------------------------
     private int frameValue;
@@ -54,19 +53,21 @@ public class Controller implements Initializable {
 
         referenceString_textfield.textProperty().addListener((observable, oldValue, newValue) -> {
             referenceStringValue = attachedListener(referenceString_textfield, newValue);
+            output_textarea.setScrollLeft(Double.MAX_VALUE);
         });
 
     }
 
     @FXML
     void frameKeyPressed(KeyEvent event) {
-
+        //TODO: if KeyCode.ENTER was pressed then used the tab function.
     }
 
     @FXML
     void referenceStringKeyPressed(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER){
             referenceListener();
+            output_textarea.setScrollLeft(Double.MAX_VALUE);
         }
 
     }
@@ -85,6 +86,8 @@ public class Controller implements Initializable {
         hit_ratio.setText("0");
         hits.setText("0");
         faults.setText("0");
+        faultRate.setText("0");
+        refLength.setText(referenceStringList.size() + "");
     }
 
     @FXML
@@ -92,19 +95,12 @@ public class Controller implements Initializable {
         Window window = actionBar.getScene().getWindow();
         window.setX(event.getScreenX() - xOffset);
         window.setY(event.getScreenY() - yOffset);
-        System.out.println("actionBarMouseDragged method:");
-        System.out.println("X = " + (event.getScreenX() - xOffset));
-        System.out.println("Y = " + (event.getScreenY() - yOffset));
     }
 
     @FXML
     void actionBarMousePressed(MouseEvent event) {
         xOffset = event.getSceneX();
         yOffset = event.getSceneY();
-
-        System.out.println("actionBarMousePressed method:");
-        System.out.println("X = " + xOffset);
-        System.out.println("X = " + yOffset);
     }
 
     @FXML
@@ -115,17 +111,17 @@ public class Controller implements Initializable {
     //------------------------------------private methods------------------------------------
 
     private void referenceListener() {
-
         referenceStringList.add(referenceStringValue);
         referenceString_textfield.clear();
 
         fifo = new FIFO(frameValue,referenceStringList);
 
         output_textarea.setText(fifo.calculate());
+        refLength.setText(referenceStringList.size() + "");
+        faultRate.setText(fifo.getFaultRate());
         hits.setText(fifo.getHit().toString());
         hit_ratio.setText(fifo.getHitRatio());
         faults.setText(fifo.getFault().toString());
-        output_textarea.setScrollLeft(Double.MAX_VALUE);
     }
     private int attachedListener(JFXTextField textField,String newValue) throws NumberFormatException{
         if (!newValue.matches("\\d*")) {
@@ -139,6 +135,5 @@ public class Controller implements Initializable {
         }
     }
 
-    //------------------------------------------------------------Public methods---------------------------------------------
 
 }
